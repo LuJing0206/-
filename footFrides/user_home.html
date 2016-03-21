@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />-->
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/user_home.css"/>
+		<style type="text/css">
+			.reshfe{
+				text-align: center;
+				height: 30px;
+				font-size: 0.16rem;
+				
+			}
+			@-webkit-keyframes loading{
+				from{transform: rotate(0);}
+				to{transform: rotate(360deg);}
+			}
+			.reshfe img{
+				width: 30px;
+				height: 30px;
+				display: inline-block;
+			
+			}
+			.reshfe img.fig{
+				-webkit-animation-name:loading;
+				-webkit-animation-duration:2s;
+				-webkit-animation-iteration-count:infinite;
+				-webkit-animation-timing-function:linear;
+			}
+			.reshfe p{
+				line-height: 30px;
+			}
+			.hidden{
+				display: none;
+			}
+			/*.user_head{
+				position: relative;
+			}
+			#photo_titlt{
+				position: absolute;
+				left: 0;
+				bottom: 10px;
+				background: #FFFFFF;
+			}*/
+		</style>
+		
+	</head>
+	<body>
+		<div class="top_fix">
+			<header><h1>个人中心</h1></header>
+			<section class="search_warp">
+				<div class="search_group">
+					<input type="text" name="search" id="search" class="search_input" placeholder="请输入昵称" />
+					<button type="button" id="search_btn" class="search_btn">搜索</button>
+				</div>
+			</section>
+		</div>	
+		<div class="user_head_warp">
+			<section class="user_head">
+				<h1 class="logo left user_photo"><label for="user_photo"><img src="img/pkq.png"/></label><input type="file" name="user_photo" id="user_photo" class="hidden" value="" /> </h1>
+				<span id="gx">	跟新图片</span>
+				<div class="user_font left">
+					<p>我叫小萌</p>
+					<p>我是小萌我怕誰！我是小萌我怕誰！哈哈哈哈！</p>
+				</div>
+			</section>
+			<div class="usr_tabs flex">
+				<a href="#" class="photo on">照片 (<span>1</span>)</a>
+				<a href="#" class="atten">关注(<span>3</span>)</a>
+				<a href="#" class="fans">粉丝(<span>8</span>)</a>
+			</div>
+		</div>
+		<div id="scroll_user_warp">
+			
+			<div id="user_scroll">
+				<div class="reshfe">
+				   <img src="img/pkq.png" alt="" class="" /><p style=" display: inline-block;"> 拉动刷新</p>
+			    </div>
+				<ul class="pubLeft left">
+					<li><img src="img/3.jpg"/></li>
+					
+				</ul>
+				<ul class="pubRight right">
+					<li><img src="img/zqbb5.jpg"/></li>
+					
+				</ul>
+			</div>
+		</div>
+		
+		<footer class="footer flex">
+			<dl>
+				<dt><img src="icon/home.png"/></dt>
+				<dd><a href="">首页</a></dd>
+			</dl>
+			<dl>
+				<dt><img src="icon/fangdajing.png"/></dt>
+				<dd><a href="">发现</a></dd>
+			</dl>
+			<dl class="camer">
+				<dt><a href=""><img src="icon/camersf.png"/></a></dt>
+				
+			</dl>
+			<dl>
+				<dt><img src="icon/people.png"/></dt>
+				<dd><a href="">我的</a></dd>
+			</dl>
+			<dl>
+				<dt><img src="icon/last.png"/></dt>
+				<dd><a href="">退出</a></dd>
+			</dl>
+	    </footer>
+		
+		
+		
+		<script type="text/javascript" src="js/rem.js"></script>
+		<script type="text/javascript" src="js/zepto.min.js"></script>
+		<script type="text/javascript" src="js/iscroll.js"></script>
+		
+		<script type="text/javascript">
+		//iscroll
+		var pulldown;
+		var scroll;
+		var num=0,
+			flat=0;
+		function userIscroll(){
+			var comH = $('.top_fix').height()+$('.user_head_warp').height()+$('footer').height()+10;
+	        $('#scroll_user_warp').height($(window).height()-comH);
+			    scroll = new iScroll('scroll_user_warp',{
+				vScrollbar:false,
+				topOffset:30,
+				useTransition: true,
+				onRefresh:function(){
+					if($('.reshfe>img').hasClass('fig')){
+						$('.reshfe>img').removeClass('fig')
+					}
+				},
+				onScrollMove: function(){
+					console.log(this.y)
+					console.log(this.minScrollY+'|'+this.maxScrollY)
+				if(this.y>=10){
+					 flat =1;
+					 this.minScrollY = 0;
+					}else{
+					 	flat = 0;
+						this.minScrollY = -30
+					}
+				},
+				onScrollEnd:function(){
+					if(flat == 1){
+						$('.reshfe img').addClass('fig');
+					 	num+=2;
+						pullDownresfres();
+						flat =0;
+					}
+				}
+				
+			});
+		};
+		
+		function pullDownresfres(){
+				
+			setTimeout(function(){
+				warpPb();
+				scroll.refresh();
+			},1000)
+		}
+	window.addEventListener('load',userIscroll,false)	
+//			瀑布流：
+	function warpPb(){
+	    var minH = function(){
+	    	var minHarr = [];
+	    	var ou1H = $('.pubLeft').height(),
+	    		ou2H =$('.pubRight').height();
+	    	if(ou1H >= ou2H){
+	    		return 1
+	    	}else{
+	    		return 0
+	    	}
+	    }
+	     $.ajax({
+	     	type:"get",
+	     	url:"bpl.json",
+	     	async:false,
+	     	success:function(data){
+	     		for(var i=num;i<num+2;i++){
+	     			if(num+2>data.length){
+	     				return 0
+	     			}
+	     			var li = '<li><img src="'+data[i]+'"/></li>'
+     				$('#user_scroll>ul').eq(minH()).append(li);
+	     		}
+	     	}
+	     });
+	};
+	
+	
+	
+	//跟新头像		
+	$(function(){
+		var userPhoto = $('.user_photo');
+		var loginuserid =JSON.parse(window.localStorage.getItem('loginUser')).id;
+		var oGX = $('#gx')
+		oGX.on('tap',function(e){
+			
+			
+			var ofile = $('#user_photo')[0].files[0]
+			var rFilter = /image\/\w+/
+			if(!ofile){
+				alert('请选择图片')
+			}else if(rFilter.test(ofile.type)){
+				$.ajax({
+				type:"get",
+				url:"http://localhost:8080/Proxy/FootBall/user/json/update-avatar.do",
+				async:true,
+				data:{'loginuserid':loginuserid,'fileid': ofile},
+				success:function(data){
+					alert(data)
+				}
+			});
+			}
+			
+			
+		})
+		
+		
+	})
+			
+			
+		</script>
+	</body>
+</html>

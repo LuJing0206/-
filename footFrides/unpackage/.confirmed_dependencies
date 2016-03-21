@@ -1,0 +1,69 @@
+{
+	"index.html": {
+		"resources": [
+			"css/style.css",
+			"css/reset.css",
+			"js/hot.js",
+			"js/zepto.min.js",
+			"js/iscroll.js",
+			"img/images/hot_08.png",
+			"img/images/hot_04.png",
+			"img/images/hot_03.png",
+			"img/images/hot_09.png",
+			"img/came.png",
+			"img/people.png",
+			"img/fangdajing.png",
+			"img/house1.png",
+			"img/last.png",
+			"img/pull-icon@2x.png",
+			"img/1.jpg",
+			"img/2.jpg",
+			"img/6.jpg",
+			"img/4.jpg",
+			"img/3.jpg",
+			"img/5.jpg",
+			"img/bggroup.png",
+			"img/footsh5.jpg",
+			"img/zqbb3.jpg",
+			"js/swiper-3.3.1.jquery.min.js",
+			"img/zqbb2.jpg",
+			"img/footsh1.jpg",
+			"img/footsh2.jpg",
+			"img/camer.png",
+			"img/footsh4.jpg",
+			"img/zqbb1.jpg",
+			"img/zqbb4.jpg",
+			"css/swiper-3.3.1.min.css",
+			"img/zqbb5.jpg",
+			"img/zqbb6.jpg",
+			"img/footsh7.jpg",
+			"attentionList.html"
+		],
+		"refer": [
+			"attentionList.html"
+		]
+	},
+	"attentionList.html": {
+		"resources": [
+			"icon/camersf.png",
+			"index.html",
+			"icon/last.png",
+			"icon/people.png",
+			"img/lily.png",
+			"css/attention.css",
+			"img/4.jpg",
+			"img/zan.png",
+			"js/rem.js",
+			"img/mao.jpg",
+			"icon/fangdajing.png",
+			"icon/home.png",
+			"img/pkq.png",
+			"js/zepto.min.js",
+			"js/iscroll.js",
+			"css/reset.css"
+		],
+		"refer": [
+			"index.html"
+		]
+	}
+}

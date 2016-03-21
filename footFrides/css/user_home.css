@@ -1,0 +1,223 @@
+@charset "utf-8";
+html,body{ width: 100%; height: 100%; overflow: hidden;}
+body{
+     font-size: 0.14rem;
+     max-width: 640px;
+     position: relative;
+     margin: 0 auto;
+     background: #f1f1f1;
+	
+}
+.left{ float: left;}
+.right{float: right;}
+.flex{
+	display: box;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+.top_fix{
+	width: 100%;
+	/*position: absolute;
+	top: 0;
+	left: 0;*/
+	z-index: 99;
+}
+header{
+	height: 0.74rem;
+	width: 100%;
+	text-align: center;
+	background: #0f91c5;
+}
+header h1{
+	font-size: 0.32rem;
+	line-height: 0.74rem;
+	color: #FFFFFF;
+	font-family: "微软雅黑";
+	
+}
+
+.search_warp{
+	width: 100%;
+	height: 0.66rem;
+	border-bottom: 1px solid #d9d9d9;
+	background: #FFFFFF;
+	overflow: hidden;
+}
+.search_group{
+	width: 6.20rem;
+	margin: 0.09rem auto;
+	background: #79C1DF;
+}
+.search_input{
+	width: 5.14rem;
+	height: 0.46rem;
+	border: 1px solid #aaaaaa;
+	float: left;
+	padding-left: 0.12rem;
+	box-sizing: border-box;
+	-webkit-box-sizing:border-box ;
+	-webkit-border-radius: 0.05rem;
+	border-radius:  0.05rem;
+}
+.search_btn{
+	border: none;
+	outline: none;
+	float: right;
+	width: 0.92rem;
+	height: 0.46rem;
+	border: 1px solid #aaaaaa;
+	-webkit-border-radius: 0.05rem;
+	border-radius:  0.05rem;
+	background: #0f91c5;
+	font-size: 0.24rem;
+	color: #FFFFFF;
+	
+	
+}
+
+.user_head_warp{
+	width: 100%;
+	/*position: absolute;
+	top: 1.51rem;
+	left: 0;*/
+	background: #FFFFFF;
+	border-bottom: 1px solid #AAAAAA;
+}
+.user_head{
+	display: block;
+	height: 1.40rem;
+	width: 100%;
+	background: #FFFFFF;
+	margin-top: 0.1rem;
+	overflow: hidden;
+
+}
+.logo{
+	width: 1.01rem;
+	height: 0.94rem;
+	margin: 0.1rem 0 0.25rem 0.17rem;
+	border-radius: 50%;
+	overflow: hidden;
+	cursor: pointer;
+}
+.logo img{
+	width: 1.01rem;
+	height: 0.94rem;
+}
+.user_font{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	width: 4.26rem;
+	padding: 0.14rem 0 0.8rem 0.20rem;
+	overflow: hidden;
+	
+}
+.user_font p{
+	font-size: 0.28rem;
+	line-height: 0.52rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.user_font p:first-child{
+	color: #000;
+}
+.user_font p:last-child{
+	color: #cfcfcf;
+}
+.usr_tabs{
+	width:100%;
+}
+.usr_tabs a{
+	display: inline-block;
+	-webkit-box-flex: 1;
+	flex: 1;
+	text-align: center;
+	font-size: 0.24rem;
+	color: #999999;
+	line-height: 0.32rem;
+	border-bottom: 0.05rem solid transparent;
+}
+.usr_tabs a.on{
+	border-bottom: 0.05rem solid #0F91C5;
+	color: #0F91C5;
+}
+#scroll_user_warp{
+	/*position: absolute;
+	top: 3.45rem;
+	bottom: 0.90rem;*/
+	width: 100%;
+	background: #FFFFFF;
+	
+}
+
+#user_scroll{
+	float:left;
+}
+
+#user_scroll li{
+	float:left;
+}
+#user_scroll img{
+	max-width: 100%;
+}
+.pubLeft{
+	float: left;
+	width: 50%;
+	overflow: hidden;
+}
+.pubRight{
+	float: right;
+	width: 50%;
+	overflow: hidden;
+}
+
+footer{
+	height: 40px;
+	width: 100%;
+	
+	background: #FFFFFF;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+footer dl img{
+	width: 0.28rem;
+	height: 0.28rem;
+	display: inline-block;
+}
+footer dl{
+	flex: 1;
+	-moz-box-flex: 1;
+	-webkit-flex: 1;
+	-webkit-box-flex: 1;
+	text-align: center;
+}
+footer dl dd a{
+	font-size: 0.24rem;
+	color: #cfcfcf;
+	line-height: 0.32rem;
+}
+footer dl dt{
+	padding: 5px;
+	padding-bottom: 2px;
+}
+footer .camer{
+	
+	margin-top: -10px;
+	
+}
+footer .camer img{
+	width: 0.85rem;
+	height: 0.85rem;
+	
+}
+
+
+
+
+
+
+

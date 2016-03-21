@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
+		<title>关注</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/attention.css"/>
+	</head>
+	<body>
+		<header>
+			<div class="page1_tab">
+				<a class="" href="index.html">热点</a>
+				<a class="active" href="attentionList.html">关注</a>
+			</div>
+		</header>
+	 <section id="atten-warp">
+	 	<div id="atten-scroll">
+		<section class="user_head">
+			<h1 class="logo left"><img src="img/pkq.png"/></h1>
+			<div class="user_font left">
+				<p>我叫小萌</p>
+				<p>我是小萌我怕誰！我是小萌我怕誰！哈哈哈哈！</p>
+			</div>
+			<div class="zan right">
+				<a href="###">382422</a>
+			</div>
+		</section>
+		<section class="show_pic">
+			<figure>
+				<h3><img src="img/mao.jpg"/></h3>
+				<figcaption>小丸子啊小丸子！</figcaption>
+			</figure>
+		</section>
+		<section class="user_head">
+			<h1 class="logo left"><img src="img/lily.png"/></h1>
+			<div class="user_font left">
+				<p>LiLy</p>
+				<p>Hello,My name is LiLy!！</p>
+			</div>
+			<div class="zan right">
+				<a href="###">382422</a>
+			</div>
+		</section>
+		<section class="show_pic">
+			<figure>
+				<h3><img src="img/4.jpg"/></h3>
+				<figcaption>小丸子啊小丸子！</figcaption>
+			</figure>
+		</section>
+	  </div>	
+	</section>		
+		<footer class="footer flex">
+			<dl>
+				<dt><img src="icon/home.png"/></dt>
+				<dd><a href="">首页</a></dd>
+			</dl>
+			<dl>
+				<dt><img src="icon/fangdajing.png"/></dt>
+				<dd><a href="">发现</a></dd>
+			</dl>
+			<dl class="camer">
+				<dt><a href=""><img src="icon/camersf.png"/></a></dt>
+				
+			</dl>
+			<dl>
+				<dt><img src="icon/people.png"/></dt>
+				<dd><a href="">我的</a></dd>
+			</dl>
+			<dl>
+				<dt><img src="icon/last.png"/></dt>
+				<dd><a href="">退出</a></dd>
+			</dl>
+	    </footer>
+		
+		
+		
+		
+	<script type="text/javascript" src="js/zepto.min.js"></script>
+	<script src="js/iscroll.js"></script>
+	<script src="js/rem.js"></script>
+	<script type="text/javascript">
+		var myscroll;
+		function loade3(){
+			myscroll = new iScroll('atten-warp',{
+				hScroll:false,
+				lockDirection:true,
+				vScrollbar:false,
+			})
+		}
+		document.addEventListener('touchmove',function(event){ event.preventDefault()},false)
+		document.addEventListener('DOMContentLoaded', function () { setTimeout(loade3, 200); }, false);
+		
+		$(function(){
+			
+			function gzfn(){
+				
+				$.ajax({
+					type:"get",
+					url:"",
+					async:true
+				});
+				
+			}
+			
+			
+		})
+	</script>
+	</body>
+</html>

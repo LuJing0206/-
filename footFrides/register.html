@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/comme.css"/>
+		<title>足球圈子 - 注册</title>
+		<style type="text/css">
+			.form1 input:nth-of-type(3){
+				margin-top: 27px;
+				margin-bottom: 43px;
+			}
+			input{
+				background: #FFFFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<header>足球圈子 - 注册</header>
+		<section class="form-group">
+			<form  class="form1">
+				<input type="text" name="reg" id="reg" placeholder="手机号" required="required" />
+				<input type="password" name="pass" id="pass" placeholder="密码" required="required" />
+				<input type="text" name="pass" id="nick" placeholder="昵称" required="required" />
+				<button type="button" class="comme-submit regbtn">提交</button>
+			</form>
+		</section>
+		<script src="js/zepto.min.js"></script>
+		<script type="text/javascript">
+			
+		$(function(){
+			
+			$('.regbtn').bind('tap',function(){
+				var logname = $('#reg').val();
+			    var pass = $('#pass').val();
+			    var nickname = $('#nick').val();
+			    var pattern = /^1[34578]\d{9}$/; 	
+				var mima=/^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,18}$/;
+				var re1 = new RegExp("^([\u4E00-\uFA29]|[\uE7C7-\uE7F3]|[a-zA-Z0-9])*$"); 
+			
+				
+				$.ajax({
+					type:'get',
+					url:"http://localhost:8080/Proxy/FootBall/user/json/reg.do",
+					async:true,
+					data:{'loginname':logname,'password':pass,'nickname':nickname},
+					success:function(data){
+//						console.log(data)
+						var data = JSON.parse(data);
+						if(data.errorinfo){
+							alert(data.errorinfo)
+						}else{
+//							var info =JSON.stringify(data.data) 
+							alert('注册成功');
+							window.location='login.html'
+							
+						}
+					}
+				});
+			})
+		})
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />-->
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/dicover.css"/>
+		<script type="text/javascript" src="js/rem.js">
+			
+		</script>
+		<title>发现</title>
+		<style>
+			.active{
+				color: #0F91C5;
+			}
+			.contianer{
+				background: #FFFFFF;
+				margin: 5px auto 5px;
+				overflow: hidden;
+			}
+			.find_user{
+				width: 100%;
+				margin-top: 8px;
+	
+			}
+			.find_user dl{ margin-left: 10px;  float: left;}
+			.find_user dl dt{
+				float: left;
+				width: 108px;
+				height: 108px;
+				border-radius: 50%;
+				text-align: center;
+				overflow: hidden;
+				
+			}
+			.find_user dl dt img{
+				display: inline-block;
+				max-width: 100%;
+			}
+			.find_user dl dd{
+				float: left;
+				padding: 10px 0 0 10px;
+			}
+			.find_user dl dd p{
+				font-size: 0.14rem;
+				line-height: 0.38rem;
+			}
+			.find_user button{
+				float: right;
+				margin: 18px 10px 0 0;
+				width: 60px;
+				height: 28px;
+				background: #57B2D7;
+				font-size: 14px;
+				color: #FFFFFF;
+				font-family: "微软雅黑";
+				border-radius: 5px;
+				outline: none;
+				border: none;
+			}
+			.find_user button.on{
+				background: #AAAAAA;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="top_fix">
+			<header><h1>发现</h1></header>
+			<section class="search_warp">
+				<div class="search_group">
+					<input type="text" name="search" id="search" class="search_input" placeholder="请输入对方昵称" />
+					<button type="button" id="search_btn" class="search_btn">搜索</button>
+				</div>
+			</section>
+		</div>	
+		<section class="user_head">
+			<h1 class="logo left"><img src="img/pkq.png"/></h1>
+			<div class="user_font left">
+				<p>我叫小萌</p>
+				<p>我是小萌我怕誰！我是小萌我怕誰！哈哈哈哈！</p>
+			</div>
+		</section>
+		<section class="contianer">
+			<div class="find_user clearfix">
+				<dl>
+					<dt><img src="img/lily.png"/></dt>
+					<dd>
+					  <p>id:234</p>
+					  <p>昵称:骚飞</p>
+					</dd>
+				</dl>
+				<button type="button">关注</button>
+			</div>
+			
+			
+			
+			
+		</section>
+	
+		<footer class="footer flex">
+			<dl>
+			<a href="index.html">
+				<dt><img src="icon/home2.png"/></dt>
+				<dd>首页</dd>
+			 </a>
+			</dl>
+			<dl><a href="###" class="active">
+				<dt><img src="icon/find.png"/></dt>
+				<dd>发现</dd>
+				</a>
+			</dl>
+			<dl class="camer">
+				<dt><a href=""><img src="icon/camersf.png"/></a></dt>
+				
+			</dl>
+			<dl><a href="user_home.html">
+				<dt><img src="icon/people.png"/></dt>
+				<dd>我的</dd>
+				</a>
+			</dl>
+			<dl><a href="###">
+				<dt><img src="icon/last.png"/></dt>
+				<dd>退出</dd>
+				</a>
+			</dl>
+	    </footer>	
+	 <script src="js/zepto.min.js"></script>
+	<script type="text/javascript">
+		function init (){
+			$('.contianer').height($(window).height()-$('.top_fix ').height()- $('.user_head').height()-$('footer').height()-15);
+		}
+		window.addEventListener('load',init,false);
+		
+		$('#search_btn').on('tap',function(){
+			var oSearch = $('#search').val()
+			var oId = JSON.parse(window.localStorage.getItem('loginUser')).id;
+			$.ajax({
+				type:"get",
+				url:"http://localhost:8080/Proxy/FootBall/user/json/queryall.do",
+				async:true,
+				data:{'keyword':$('#search').val(),'loginsuserid':oId,'page.pageNo':1},
+				success:function(data){
+					$('.contianer').empty()
+					var data = JSON.parse(data);
+					var usrList = data.data.userlist;
+				   for(var i=0;i<usrList.length;i++){
+				 		console.log(usrList[i])
+				   	   if(usrList[i].nickname ==oSearch || usrList[i].loginname ==oSearch){
+				   	    	var odiv = '<div class="find_user" data-id="'+usrList[i].id+'"><dl><dt><img src="http://101.200.173.217:8080/FootBall'+usrList[i].avatarpath+'"/></dt><dd><p>id:'+usrList[i].id+'</p><p>昵称:'+usrList[i].nickname+'</p></dd></dl><button type="button">关注</button></div>'
+				   	   	    $('.contianer').append(odiv)
+				   	   }
+				   };
+				   if($('.find_user').length == 0){
+				   	alert('您查找的用户不存在！')
+				   }
+				   
+				}
+			});
+		});
+	//关注
+	var localIdArr = new Array();
+	$('.contianer').on('tap',function(ev){
+		var ev = ev || event;
+		var that = ev.srcElement || ev.target;
+		if(that.tagName.toLowerCase() == 'button'){
+			var id = $(that).parent().attr('data-id');
+			if($(that).hasClass('on')){
+				$(that).removeClass('on').text('关注');
+				for(var i=0;i<localIdArr.length;i++){
+					if(localIdArr[i] == id){
+						localIdArr.splice(i,1);
+						window.localStorage.setItem('guanzhu',localIdArr);
+					}
+				}
+			}else if(!$(that).hasClass('on')){
+				$(that).addClass('on').text('已关注');
+				localIdArr.push(id)
+				window.localStorage.setItem('guanzhu',localIdArr);
+			}			
+		}		
+	})
+		
+		
+		
+		
+	</script>
+	</body>
+</html>
